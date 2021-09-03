@@ -17,7 +17,7 @@ class TestUser(unittest.TestCase):
         '''
         Set up method to run before each test cases.
         '''
-        self.new_user = User("Caleb","12345","copycred") # create user object
+        self.new_user = User("Caleb","12345") # create user object
 
 
     def test_init(self):
@@ -27,7 +27,7 @@ class TestUser(unittest.TestCase):
 
         self.assertEqual(self.new_user.userlogin_name,"Caleb")
         self.assertEqual(self.new_user.password,"12345")
-        self.assertEqual(self.new_user.copycred,"copycred")
+        # self.assertEqual(self.new_user.copycred,"copycred")
 
         #for saving new user
 
@@ -45,16 +45,43 @@ class TestUser(unittest.TestCase):
             '''
             User.user_list = []
     #for deleting user
-    def test_delete_user(self):
-            '''
-            test_delete_user to test if we can remove a user from our user list
-            '''
-            self.new_user.save_user()
-            test_user = User("Test","user","12345") # new user
-            test_user.save_user()
+    # def test_delete_user(self):
+    #         '''
+    #         test_delete_user to test if we can remove a user from our user list
+    #         '''
+    #         self.new_user.save_user()
+    #         test_user = User("Test","user","12345") # new user
+    #         test_user.save_user()
 
-            self.new_user.delete_user()# Deleting a user object
-            self.assertEqual(len(User.user_list),1)
+    #         self.new_user.delete_user()# Deleting a user object
+    #         self.assertEqual(len(User.user_list),1)
+
+                 # test to find user
+    def test_find_user_by_password(self):
+        '''
+        test to check if we can find a user by password and display information
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Caleb","12345") # new user
+        test_user.save_user()
+
+        found_user = User.find_by_password("12345")
+
+        self.assertEqual(found_user.password,test_user.password)
+        #checking if user exists
+    def test_user_exist(self):
+        '''
+        test to check if we can return a Boolean  if we cannot find the user.
+        '''
+
+        self.new_user.save_user()
+        test_user = User("Caleb","12345") # new user
+        test_user.save_user()
+
+        user_exists = User.user_exist("12345")
+
+        self.assertTrue(user_exists)
 
      #for copying credentials
     # def test_copy_cred(self):

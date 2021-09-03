@@ -30,6 +30,36 @@ class User:
 
         User.user_list.remove(self)
 
+    @classmethod
+    def find_by_password(cls,password):
+        '''
+        Method that takes in a password and returns a user that matches that password.
+
+        Args:
+            password: Phone password to search for
+        Returns :
+            Credentials of user that matches the password.
+        '''
+
+        for user in cls.user_list:
+            if user.password == password:
+                return user
+
+    @classmethod
+    def user_exist(cls,password):
+        '''
+        Method that checks if a user exists from the credentials list.
+        Args:
+            password: Password to search if it exists
+        Returns :
+            Boolean: True or false depending if the usere exists
+        '''
+        for user in cls.user_list:
+            if user.password == password:
+                    return True
+
+        return False
+
     # @classmethod
     # def copy_cred(cls,password):
     #     user_found = User.find_by_password(password,userlogin_name)
