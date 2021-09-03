@@ -5,13 +5,13 @@ class User:
     """
     user_list = [] # Empty user list
     # Init method up here
-    def __init__(self,userlogin_name,password,copycred):
+    def __init__(self,userlogin_name,password):
 
           # docstring removed for simplicity
 
             self.userlogin_name = userlogin_name
             self.password = password
-            self.copycred = copycred
+            # self.copycred = copycred
 
     def save_user(self):
 
