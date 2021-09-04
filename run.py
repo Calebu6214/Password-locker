@@ -38,7 +38,7 @@ def main():
         print('\n')
 
         while True:
-                print("Use these short codes : ca - create a new account, dc - display credentials, fc -find a credential, ex -exit the user list, dl -delete the credentials,ce -copy credentials ")
+                print("Use these short codes : ca - create a new account,lg - for login to your account, dc - display credentials, fc -find a credential, ex -exit the user list, dl -delete the credentials,ce -copy credentials ")
 
                 short_code = input().lower()
 
@@ -74,6 +74,27 @@ def main():
                         else:
                             print(f"welcome: {userlogin_name} to your account")
                             print('\n')
+                
+                elif  short_code=='lg':
+                       print("Enter user name")
+                       defaultuser_name=input()
+
+                       print("Enter password")
+                       defaultuser_password=input()
+                       print('\n')
+                       while defaultuser_name !='newuser' or defaultuser_password !='12345':
+                           print("wrong username or password.Username 'newuser' and password '12345'")
+                           print("Enter username")
+                           defaultuser_name=input()
+
+                           print("Enter password")
+                           defaultuser_password=input()
+                           print('\n')
+
+                       else:
+                           print("successfully login")
+                           print('\n')
+
 
                 elif short_code == 'fc':
 
@@ -89,6 +110,12 @@ def main():
                                 print(f"Username.......{search_user.userlogin_name}")
                         else:
                                 print("That user does not exist")
+
+                elif short_code =='ex':
+                    break
+                else:
+                    print("Enter valid code to continue")
+
 
 if __name__ == '__main__':
 
