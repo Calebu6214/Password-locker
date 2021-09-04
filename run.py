@@ -10,24 +10,46 @@ def create_user(userlogin_name,password):
     new_user =User(userlogin_name,password)
     return new_user
 
+
+def create_cred(credname,userlogin_name,password):
+    '''
+    Function to create a new cred
+    '''
+    new_cred =Cred(credname,userlogin_name,password)
+    return new_cred
+
         # save User
 def save_users(user):
     '''
     Function to user
     '''
     user.save_user()
+
+
+        # save User
+def save_creds(cred):
+    '''
+    Function to cred
+    '''
+    cred.save_cred()    
+
+def check_existing_users(userlogin_name,password):
+    '''
+    Function that check if a User exists with that userlogin and password and return a Boolean
+    '''
+    return User.user_exist(userlogin_name,password)
         #finding user
-def find_user(password):
+def find_cred(credname):
     '''
-    Function that finds a user by password and returns the credentials
+    Function that finds a cred by credname and returns the credentials
     '''
-    return User.find_by_password(password)
-        #check if contact exist
-def check_existing_users(password):
+    return Cred.find_by_credname(credname)
+        #check if credential exist
+def check_existing_creds(credname):
     '''
-    Function that check if a user exists with that password and return a Boolean
+    Function that check if a Cred exists with that credname and return a Boolean
     '''
-    return User.user_exist(password)
+    return Cred.cred_exist(credname)
 
 
 
@@ -39,7 +61,7 @@ def main():
         print('\n')
 
         while True:
-                print("Use these short codes : ca - create a new account,lg - for login to your account ")
+                print("Use these short codes : ca - create a new account,lg - for login to your account,ex - to exit ")
 
                 short_code = input().lower()
 
@@ -59,22 +81,7 @@ def main():
                         print(f"New User {userlogin_name} {password} created")
                         print('\n')
                         print("proceed to login")
-                        print("enter username")
-                        entered_name=input()
-                        print("your password")
-                        entered_password=input()
-                        print ('\n')
-
-                        while userlogin_name!=entered_name or password!=entered_password:
-                            print("Invalid username or password")
-                            print("Username")
-                            entered_name=input()
-                            print("Your password")
-                            entered_password=input() 
-
-                        else:
-                            print(f"welcome: {userlogin_name} to your account")
-                            print('\n')
+                       
                 
                 elif  short_code=='lg':
                        print("Enter user name")
@@ -83,50 +90,53 @@ def main():
                        print("Enter password")
                        defaultuser_password=input()
                        print('\n')
-                       while defaultuser_name !='newuser' or defaultuser_password !='12345':
-                           print("wrong username or password.Username 'newuser' and password '12345'")
-                           print("Enter username")
-                           defaultuser_name=input()
-
-                           print("Enter password")
-                           defaultuser_password=input()
-                           print('\n')
-
-                       else:
-                           print("successfully login")
-                           print('\n')
-
+                       if check_existing_users(defaultuser_name,defaultuser_password):
+                           print(f"welcome:{defaultuser_name} into your account")
+             
                            while True:
-                               print("use these short codes: cn-create new credentials,dc - display credentials, fc -find a credential, ex -exit the user list, dl -delete the credentials,ce -copy credentials")
-                               short_code = input().lower()
+                                print("use these short codes: cn-create new credentials,dc - display credentials, fc -find a credential, ex -logout, dl -delete the credentials,ce -copy credentials")
+                                short_code = input().lower()
 
-                               if short_code=='cn':
+
+                                if short_code=='cn':
                                    print("Enter new account name")
-                                   account_name=input()
+                                   credname=input()
                                    print("Enter username")
                                    userlogin_name=input()
                                    print("Password")
                                    password=input()
 
-                elif short_code == 'fc':
+                                   save_creds(create_cred(credname,userlogin_name,password)) # create and save new user in new app.
+                                   print ('\n')
+                                   print(f"New Cred {credname} {userlogin_name} {password} created")
+                                   print('\n')
+                              
 
-                        print("Enter the password you want to search for")
+                                elif short_code == 'fc':
 
-                        search_password = input()
-                        if check_existing_users(search_password):
-                                search_user = find_user(search_password)
-                                print(f"{search_user.userlogin_name} {search_user.password}")
-                                print('-' * 20)
+                                        print("Enter the appname you want to search for")
 
-                                print(f"Password.......{search_user.password}")
-                                print(f"Username.......{search_user.userlogin_name}")
-                        else:
-                                print("That user does not exist")
+                                        search_credname = input()
+                                        if check_existing_creds(search_credname):
+                                                search_cred = find_cred(search_credname)
+                                                print(f"{search_cred.credname} {search_cred.userlogin_name} {search_cred.password}")
+                                                print('-' * 20)
 
-                elif short_code =='ex':
+                                                print(f"Appname.......{search_cred.credname}")
+                                                print(f"Password.....{search_cred.password}")
+                                                print(f"Username.......{search_cred.userlogin_name}")
+                                        else:
+                                                print("That credential does not exist")
+
+                                elif short_code =='ex':
+                                       break
+                                else:
+                                    print("Enter valid code to continue")
+                
+                elif short_code=='ex':
                     break
                 else:
-                    print("Enter valid code to continue")
+                    print("Enter a valid code to continue")                    
 
 
 if __name__ == '__main__':

@@ -43,6 +43,16 @@ class TestCred(unittest.TestCase):
             tearDown method that does clean up after each test case has run.
             '''
             Cred.cred_list = []
+        #for saving several credentials
+    def test_save_multiple_cred(self):
+            '''
+            test_save_multiple_credentials to check if we can save multiple credentials
+            objects to our cred_list
+            '''
+            self.new_cred.save_cred()
+            test_cred = Cred("FB","Caleb","12345") # new credential
+            test_cred.save_cred()
+            self.assertEqual(len(Cred.cred_list),2)
     #for deleting cred
     def test_delete_cred(self):
             '''
@@ -81,6 +91,14 @@ class TestCred(unittest.TestCase):
         cred_exists = Cred.cred_exist("FB")
 
         self.assertTrue(cred_exists)
+
+
+    def test_display_all_creds(self):
+        '''
+        method that returns a list of all credentials saved
+        '''
+
+        self.assertEqual(Cred.display_creds(),Cred.cred_list)
 
 if __name__ == "__main__":
     unittest.main()

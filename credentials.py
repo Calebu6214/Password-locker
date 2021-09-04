@@ -57,3 +57,11 @@ class Cred:
                     return True
 
         return False
+
+
+       @classmethod
+       def display_creds(cls):
+        '''
+        method that returns the credential list
+        '''
+        return cls.cred_list

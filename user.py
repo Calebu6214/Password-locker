@@ -46,7 +46,7 @@ class User:
                 return user
 
     @classmethod
-    def user_exist(cls,password):
+    def user_exist(cls,userlogin_name,password):
         '''
         Method that checks if a user exists from the credentials list.
         Args:
@@ -55,7 +55,7 @@ class User:
             Boolean: True or false depending if the usere exists
         '''
         for user in cls.user_list:
-            if user.password == password:
+            if user.password == password and user.userlogin_name==userlogin_name:
                     return True
 
         return False
