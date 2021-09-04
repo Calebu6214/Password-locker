@@ -2,6 +2,8 @@
 import pyperclip
 from user import User
 from credentials import Cred
+import random
+from random import randint
 
 def create_user(userlogin_name,password):
     '''
@@ -118,8 +120,22 @@ def main():
                                    credname=input()
                                    print("Enter username")
                                    userlogin_name=input()
-                                   print("Password")
-                                   password=input()
+                                   while True:
+                                            print(" follow these codes: cp- create password,gp-generate password")
+                                            random = input().lower()
+                                            if random =="cp":
+                                                print("Create your password")
+                                                password =input()
+                                            elif random =="gp":
+                                                print("What length of password do you want?")
+                                                p_length=int(input())
+                                                password=""
+                                                for i in range(p_length):
+                                                    i=chr(randint(65,90)).lower()
+                                                    password=password+i
+                                                print(f"use your password: {password}")
+                                                
+                                                break
 
                                    save_creds(create_cred(credname,userlogin_name,password)) # create and save new user in new app.
                                    print ('\n')
