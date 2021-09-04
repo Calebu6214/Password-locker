@@ -1,3 +1,4 @@
+import pyperclip
 class Cred:
        """
     class that generates new instances of credentials
@@ -65,3 +66,8 @@ class Cred:
         method that returns the credential list
         '''
         return cls.cred_list
+
+       @classmethod
+       def copy_cred(cls,credname):
+        cred_found = Cred.find_by_credname(credname)
+        pyperclip.copy(cred_found.credname)

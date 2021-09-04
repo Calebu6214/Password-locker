@@ -1,5 +1,5 @@
 #!/usr/bin/env python3.8
-# import pyperclip
+import pyperclip
 from user import User
 from credentials import Cred
 
@@ -107,7 +107,7 @@ def main():
                            print(f"welcome:{defaultuser_name} into your account")
              
                            while True:
-                                print("use these short codes: cn-create new credentials,dc - display credentials, fc -find a credential, ex -logout, dl -delete the credentials,ce -copy credentials")
+                                print("use these short codes: cn-create new credentials,dc - display credentials, fc -find a credential, ex -logout, dl -delete the credentials,cc -copy credentials")
                                 short_code = input().lower()
 
 
