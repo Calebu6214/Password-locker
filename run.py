@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.8
 # import pyperclip
 from user import User
+from credentials import Cred
 
 def create_user(userlogin_name,password):
     '''
@@ -38,7 +39,7 @@ def main():
         print('\n')
 
         while True:
-                print("Use these short codes : ca - create a new account,lg - for login to your account, dc - display credentials, fc -find a credential, ex -exit the user list, dl -delete the credentials,ce -copy credentials ")
+                print("Use these short codes : ca - create a new account,lg - for login to your account ")
 
                 short_code = input().lower()
 
@@ -95,6 +96,17 @@ def main():
                            print("successfully login")
                            print('\n')
 
+                           while True:
+                               print("use these short codes: cn-create new credentials,dc - display credentials, fc -find a credential, ex -exit the user list, dl -delete the credentials,ce -copy credentials")
+                               short_code = input().lower()
+
+                               if short_code=='cn':
+                                   print("Enter new account name")
+                                   account_name=input()
+                                   print("Enter username")
+                                   userlogin_name=input()
+                                   print("Password")
+                                   password=input()
 
                 elif short_code == 'fc':
 

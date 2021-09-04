@@ -1,7 +1,7 @@
 import pyperclip
 class User:
     """
-    class that generates new instances of contacts
+    class that generates new instances of users
     """
     user_list = [] # Empty user list
     # Init method up here
