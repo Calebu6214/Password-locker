@@ -52,11 +52,28 @@ def main():
                         print("Password ...")
                         password = input()
 
-
+                        
                         save_users(create_user(userlogin_name,password)) # create and save new user.
                         print ('\n')
                         print(f"New User {userlogin_name} {password} created")
+                        print('\n')
+                        print("proceed to login")
+                        print("enter username")
+                        entered_name=input()
+                        print("your password")
+                        entered_password=input()
                         print ('\n')
+
+                        while userlogin_name!=entered_name or password!=entered_password:
+                            print("Invalid username or password")
+                            print("Username")
+                            entered_name=input()
+                            print("Your password")
+                            entered_password=input() 
+
+                        else:
+                            print(f"welcome: {userlogin_name} to your account")
+                            print('\n')
 
                 elif short_code == 'fc':
 
