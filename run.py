@@ -63,7 +63,9 @@ def delete_cred(cred):
     Function to delete a credential
     '''
     return Cred.cred_list.remove(cred)    
-
+#for copying credentials
+def copy_cred(cred_found):
+    return  pyperclip.copy(cred_found.credname)
 
 
 def main():
@@ -167,6 +169,19 @@ def main():
                                     else:
                                         print("The credential doesn’t exist")
 
+                                elif short_code=='cc':
+                                    
+                                    print("Enter the appname you want to copy its credentials")
+
+                                    search_credname=input()
+                                    print('\n')
+                                    if check_existing_creds(search_credname):
+                                        search_cred=find_cred(search_credname)
+                                        copy_cred(search_cred)
+                                        print("The credentials has been copied")
+                                        print('\n')
+                                    else:
+                                        print("Credential doesn’t exist")
 
                                 elif short_code =='ex':
                                        break
