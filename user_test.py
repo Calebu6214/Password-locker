@@ -1,3 +1,4 @@
+from credentials import Cred
 import pyperclip
 import unittest # Importing the unittest module
 from user import User # Importing the user class
@@ -44,17 +45,6 @@ class TestUser(unittest.TestCase):
             tearDown method that does clean up after each test case has run.
             '''
             User.user_list = []
-    #for deleting user
-    # def test_delete_user(self):
-    #         '''
-    #         test_delete_user to test if we can remove a user from our user list
-    #         '''
-    #         self.new_user.save_user()
-    #         test_user = User("Test","user","12345") # new user
-    #         test_user.save_user()
-
-    #         self.new_user.delete_user()# Deleting a user object
-    #         self.assertEqual(len(User.user_list),1)
 
                  # test to find user
     def test_find_user_by_password(self):

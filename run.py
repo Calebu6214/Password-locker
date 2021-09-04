@@ -57,6 +57,12 @@ def display_creds():
     Function that returns all the saved creds
     '''
     return Cred.display_creds()
+#for deleting credentials
+def delete_cred(cred):
+    '''
+    Function to delete a credential
+    '''
+    return Cred.cred_list.remove(cred)    
 
 
 
@@ -106,7 +112,7 @@ def main():
 
 
                                 if short_code=='cn':
-                                   print("Enter new account name")
+                                   print("Enter new app name")
                                    credname=input()
                                    print("Enter username")
                                    userlogin_name=input()
@@ -147,7 +153,20 @@ def main():
                                         print('\n')
                                         print("You dont seem to have any credentials saved yet")
                                         print('\n')
-                                    
+                                
+                                elif short_code=='dl':
+                                    print("Enter appname you want to delete its credentials")
+                                
+                                    search_credname=input()
+                                    print('\n')
+                                    if check_existing_creds(credname):
+                                        search_cred=find_cred(search_credname)
+                                        delete_cred(search_cred)
+                                        print(f"This {search_cred.credname} app credentials has been deleted")
+                                        print('\n')
+                                    else:
+                                        print("The credential doesn’t exist")
+
 
                                 elif short_code =='ex':
                                        break
