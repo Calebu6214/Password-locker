@@ -51,6 +51,13 @@ def check_existing_creds(credname):
     '''
     return Cred.cred_exist(credname)
 
+       #display all contacts
+def display_creds():
+    '''
+    Function that returns all the saved creds
+    '''
+    return Cred.display_creds()
+
 
 
 def main():
@@ -127,6 +134,20 @@ def main():
                                                 print(f"Username.......{search_cred.userlogin_name}")
                                         else:
                                                 print("That credential does not exist")
+                                elif short_code=='dc':
+                                    if display_creds():
+                                        print("Here is a list of all your credentials")
+                                        print('\n')
+
+                                        for cred in display_creds():
+                                             print(f"{cred.credname} {cred.userlogin_name} .....{cred.password}")
+                                        print('\n')
+
+                                    else:
+                                        print('\n')
+                                        print("You dont seem to have any credentials saved yet")
+                                        print('\n')
+                                    
 
                                 elif short_code =='ex':
                                        break
