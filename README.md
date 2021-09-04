@@ -16,7 +16,7 @@
 
 
 ## Known Bugs
- .
+ .No bugs
 
 ## Technologies Used
 1. Python
