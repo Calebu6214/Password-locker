@@ -3,7 +3,7 @@
 ## By CALEB KIMUTAI
         
 ## Description
-
+.Application that help us manage passwords,displaying credentials for the user in created account,find credentials,also create and login to your account and generate new ones.
 
 ## Setup/Installation Requirements
 .git fork/clone repository <br>
