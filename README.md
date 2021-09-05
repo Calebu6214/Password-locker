@@ -23,7 +23,7 @@ input cn|input application name and username|Choose the following codes: cp - cr
 |input dc|dc|Here is a list of your credentials|
 |input dl|name of the app credentilas to be deleted|This app credentials has been  deleted|
 |input cc|application name of the credential you want to copy|application credentials has been copied |
-|input ex| ex|you exit ...bye|
+|input ex| ex|you exit |
 
 ## Known Bugs
  .No bugs
